@@ -30,3 +30,4 @@
   
 ## 手动添加资源站
     保证支持CMS采集，数据格式是json,填写到上图的数组中，注意其中标点为英文。
+    上图第三个资源站api接口：https://help.tiankongapi.com/#More
