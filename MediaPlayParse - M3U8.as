@@ -22,7 +22,7 @@
 
 string GetTitle()
 {
-    return "VideoPlay";
+    return "M3U8";
 }
 
 string GetVersion()
@@ -32,12 +32,12 @@ string GetVersion()
 
 string GetDesc()
 {
-    return "VideoPlay";
+    return "M3U8";
 }
 
-string USERAGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36";
+string USERAGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36";
 string HOMEURL;
-int RI=0;
+int RI=0,PG=1;
 bool isOnly = false;
 JsonReader JSON;
 array<string> URLLIST={
@@ -47,12 +47,14 @@ array<string> URLLIST={
     "https://api.ukuapi.com/api.php/provide/vod/",
     "https://api.1080zyku.com/inc/apijson.php",
     "https://api.tiankongapi.com/api.php/provide/vod/at/json/from/tkm3u8/",
-    "https://sdzyapi.com/api.php/provide/vod/"
+    "https://sdzyapi.com/api.php/provide/vod/",
+    "https://www.hongniuzy2.com/api.php/provide/vod/at/json/",
+    "https://kudian10.com/api.php/provide/vod/"
     };
 
 void getHomeURL(string name)
 {
-    HOMEURL = URLLIST[RI] + "?ac=list&wd=" + HostUrlEncode(name);
+    HOMEURL = URLLIST[RI] + "?ac=list&PG="+PG+"&wd=" + HostUrlEncode(name);
 }
 
 JsonValue getPlayList()
@@ -95,17 +97,21 @@ bool PlaylistCheck(const string & in path)
     if(path.find("￥")==0||path.find("$")==0){
         isOnly = true;
     }
-    if (path.find("http") != 0 && temp.size() < 4) 
+    if(path.find("panvideo") == 0)
+    {
+        return false;
+    }
+    if (path.find(":") < 0 && temp.size() < 4) 
     {
         if(temp.length()>1){
-            // if(parseInt(temp[1])<100){
-            //     PG = parseInt(temp[1]);
-            // }
-            // else{
-            //     RI = parseInt(temp[1].substr(0,temp[1].length()-2))-1;
-            //     PG = parseInt(temp[1].substr(temp[1].length()-2,2));
-            // }
-            RI = parseInt(temp[1])-1;
+            if(parseInt(temp[1])<100){
+                RI = parseInt(temp[1])-1;
+                PG = 1;
+            }
+            else{
+                RI = parseInt(temp[1])/100-1;
+                PG = parseInt(temp[1])%100;
+            }
         }
         string name = temp[0];
         name.replace("$","");
