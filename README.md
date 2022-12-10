@@ -7,7 +7,7 @@
 
 ## 用法
 
-- 1.安装[【Potplayer】](https://bleu.lanzouj.com/iFZgu07w69vg)密码：`3mk7`。
+- 1.安装[【Potplayer】](https://bleu.lanzoue.com/iFZgu07w69vg)密码：`3mk7`。
 - 2.下载`MediaPlayParse - M3U8.as`文件。
 - 3.打开PotPlayer安装路径，依次选择目录`Extension\Media\PlayParse`，将下载的文件粘贴到这里。
 - 4.重新打开`PotPlayer`,`Ctrl+u`，文本框输入影视名称（豆瓣中文名），`确定`。
