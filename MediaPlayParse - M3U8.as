@@ -48,8 +48,7 @@ array<string> URLLIST={
     "https://api.1080zyku.com/inc/apijson.php",
     "https://api.tiankongapi.com/api.php/provide/vod/at/json/from/tkm3u8/",
     "https://sdzyapi.com/api.php/provide/vod/",
-    "https://www.hongniuzy2.com/api.php/provide/vod/at/json/",
-    "https://subocaiji.com/api.php/provide/vod/at/json"
+    "https://www.hongniuzy2.com/api.php/provide/vod/at/json/"
     };
 
 void getHomeURL(string name)
